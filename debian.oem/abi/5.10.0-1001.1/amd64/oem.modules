@@ -824,8 +824,6 @@ core
 coretemp
 corsair-cpro
 cortina
-cosm_bus
-cosm_client
 counter
 cp210x
 cpcihp_generic
@@ -2830,11 +2828,6 @@ mf6x4
 mgag200
 mhi
 mi0283qt
-mic_bus
-mic_card
-mic_cosm
-mic_host
-mic_x100_dma
 michael_mic
 micrel
 microchip
@@ -4209,8 +4202,6 @@ sch_skbprio
 sch_taprio
 sch_tbf
 sch_teql
-scif
-scif_bus
 scr24x_cs
 scsi_debug
 scsi_dh_alua
@@ -5448,8 +5439,6 @@ vmw_vsock_virtio_transport_common
 vmw_vsock_vmci_transport
 vmwgfx
 vmxnet3
-vop
-vop_bus
 vp27smpx
 vport-geneve
 vport-gre
