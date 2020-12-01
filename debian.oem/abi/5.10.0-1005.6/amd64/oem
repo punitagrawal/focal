@@ -734,6 +734,7 @@ EXPORT_SYMBOL	 drivers/gpu/drm/drm_kms_helper 0x00000000	drm_dp_downstream_min_t
 EXPORT_SYMBOL	 drivers/gpu/drm/drm_kms_helper 0x00000000	drm_dp_downstream_mode
 EXPORT_SYMBOL	 drivers/gpu/drm/drm_kms_helper 0x00000000	drm_dp_dpcd_read
 EXPORT_SYMBOL	 drivers/gpu/drm/drm_kms_helper 0x00000000	drm_dp_dpcd_read_link_status
+EXPORT_SYMBOL	 drivers/gpu/drm/drm_kms_helper 0x00000000	drm_dp_dpcd_read_phy_link_status
 EXPORT_SYMBOL	 drivers/gpu/drm/drm_kms_helper 0x00000000	drm_dp_dpcd_write
 EXPORT_SYMBOL	 drivers/gpu/drm/drm_kms_helper 0x00000000	drm_dp_dsc_sink_line_buf_depth
 EXPORT_SYMBOL	 drivers/gpu/drm/drm_kms_helper 0x00000000	drm_dp_dsc_sink_max_slice_count
@@ -754,6 +755,13 @@ EXPORT_SYMBOL	 drivers/gpu/drm/drm_kms_helper 0x00000000	drm_dp_get_phy_test_pat
 EXPORT_SYMBOL	 drivers/gpu/drm/drm_kms_helper 0x00000000	drm_dp_link_rate_to_bw_code
 EXPORT_SYMBOL	 drivers/gpu/drm/drm_kms_helper 0x00000000	drm_dp_link_train_channel_eq_delay
 EXPORT_SYMBOL	 drivers/gpu/drm/drm_kms_helper 0x00000000	drm_dp_link_train_clock_recovery_delay
+EXPORT_SYMBOL	 drivers/gpu/drm/drm_kms_helper 0x00000000	drm_dp_lttpr_count
+EXPORT_SYMBOL	 drivers/gpu/drm/drm_kms_helper 0x00000000	drm_dp_lttpr_link_train_channel_eq_delay
+EXPORT_SYMBOL	 drivers/gpu/drm/drm_kms_helper 0x00000000	drm_dp_lttpr_link_train_clock_recovery_delay
+EXPORT_SYMBOL	 drivers/gpu/drm/drm_kms_helper 0x00000000	drm_dp_lttpr_max_lane_count
+EXPORT_SYMBOL	 drivers/gpu/drm/drm_kms_helper 0x00000000	drm_dp_lttpr_max_link_rate
+EXPORT_SYMBOL	 drivers/gpu/drm/drm_kms_helper 0x00000000	drm_dp_lttpr_pre_emphasis_level_3_supported
+EXPORT_SYMBOL	 drivers/gpu/drm/drm_kms_helper 0x00000000	drm_dp_lttpr_voltage_swing_level_3_supported
 EXPORT_SYMBOL	 drivers/gpu/drm/drm_kms_helper 0x00000000	drm_dp_mst_add_affected_dsc_crtcs
 EXPORT_SYMBOL	 drivers/gpu/drm/drm_kms_helper 0x00000000	drm_dp_mst_allocate_vcpi
 EXPORT_SYMBOL	 drivers/gpu/drm/drm_kms_helper 0x00000000	drm_dp_mst_atomic_check
@@ -780,6 +788,8 @@ EXPORT_SYMBOL	 drivers/gpu/drm/drm_kms_helper 0x00000000	drm_dp_psr_setup_time
 EXPORT_SYMBOL	 drivers/gpu/drm/drm_kms_helper 0x00000000	drm_dp_read_desc
 EXPORT_SYMBOL	 drivers/gpu/drm/drm_kms_helper 0x00000000	drm_dp_read_downstream_info
 EXPORT_SYMBOL	 drivers/gpu/drm/drm_kms_helper 0x00000000	drm_dp_read_dpcd_caps
+EXPORT_SYMBOL	 drivers/gpu/drm/drm_kms_helper 0x00000000	drm_dp_read_lttpr_common_caps
+EXPORT_SYMBOL	 drivers/gpu/drm/drm_kms_helper 0x00000000	drm_dp_read_lttpr_phy_caps
 EXPORT_SYMBOL	 drivers/gpu/drm/drm_kms_helper 0x00000000	drm_dp_read_mst_cap
 EXPORT_SYMBOL	 drivers/gpu/drm/drm_kms_helper 0x00000000	drm_dp_read_sink_count
 EXPORT_SYMBOL	 drivers/gpu/drm/drm_kms_helper 0x00000000	drm_dp_read_sink_count_cap
@@ -919,6 +929,7 @@ EXPORT_SYMBOL	 drivers/gpu/drm/drm_vram_helper 0x00000000	drm_vram_helper_mode_v
 EXPORT_SYMBOL	 drivers/gpu/drm/drm_vram_helper 0x00000000	drm_vram_helper_release_mm
 EXPORT_SYMBOL	 drivers/gpu/drm/drm_vram_helper 0x00000000	drm_vram_mm_debugfs_init
 EXPORT_SYMBOL	 drivers/gpu/drm/drm_vram_helper 0x00000000	drmm_vram_helper_init
+EXPORT_SYMBOL	 drivers/gpu/drm/i915/i915 0x00000000	intel_dp_lttpr_init
 EXPORT_SYMBOL	 drivers/gpu/drm/scheduler/gpu-sched 0x00000000	drm_sched_dependency_optimized
 EXPORT_SYMBOL	 drivers/gpu/drm/scheduler/gpu-sched 0x00000000	drm_sched_entity_destroy
 EXPORT_SYMBOL	 drivers/gpu/drm/scheduler/gpu-sched 0x00000000	drm_sched_entity_fini
@@ -14376,6 +14387,7 @@ EXPORT_SYMBOL_GPL	 drivers/net/can/cc770/cc770 0x00000000	free_cc770dev
 EXPORT_SYMBOL_GPL	 drivers/net/can/cc770/cc770 0x00000000	register_cc770dev
 EXPORT_SYMBOL_GPL	 drivers/net/can/cc770/cc770 0x00000000	unregister_cc770dev
 EXPORT_SYMBOL_GPL	 drivers/net/can/m_can/m_can 0x00000000	m_can_class_allocate_dev
+EXPORT_SYMBOL_GPL	 drivers/net/can/m_can/m_can 0x00000000	m_can_class_free_dev
 EXPORT_SYMBOL_GPL	 drivers/net/can/m_can/m_can 0x00000000	m_can_class_get_clocks
 EXPORT_SYMBOL_GPL	 drivers/net/can/m_can/m_can 0x00000000	m_can_class_register
 EXPORT_SYMBOL_GPL	 drivers/net/can/m_can/m_can 0x00000000	m_can_class_resume
@@ -16685,6 +16697,7 @@ EXPORT_SYMBOL_GPL	 drivers/vhost/vhost 0x00000000	vhost_signal
 EXPORT_SYMBOL_GPL	 drivers/vhost/vhost 0x00000000	vhost_vq_access_ok
 EXPORT_SYMBOL_GPL	 drivers/vhost/vhost 0x00000000	vhost_vq_avail_empty
 EXPORT_SYMBOL_GPL	 drivers/vhost/vhost 0x00000000	vhost_vq_init_access
+EXPORT_SYMBOL_GPL	 drivers/vhost/vhost 0x00000000	vhost_vq_is_setup
 EXPORT_SYMBOL_GPL	 drivers/vhost/vhost 0x00000000	vhost_vring_ioctl
 EXPORT_SYMBOL_GPL	 drivers/vhost/vhost 0x00000000	vhost_work_flush
 EXPORT_SYMBOL_GPL	 drivers/vhost/vhost 0x00000000	vhost_work_init
@@ -19165,6 +19178,7 @@ EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	__devm_regmap_init_i2c
 EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	__devm_regmap_init_mmio_clk
 EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	__devm_regmap_init_spi
 EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	__devm_reset_control_get
+EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	__devm_spi_alloc_controller
 EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	__dma_request_channel
 EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	__efivar_entry_delete
 EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	__efivar_entry_get
