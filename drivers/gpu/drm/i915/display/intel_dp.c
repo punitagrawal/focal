@@ -3556,6 +3556,10 @@ void intel_dp_set_power(struct intel_dp *intel_dp, u8 mode)
 		if (intel_dp_is_edp(intel_dp))
 			intel_edp_init_source_oui(intel_dp, false);
 
+		/* Write the source OUI as early as possible */
+		if (intel_dp_is_edp(intel_dp))
+			intel_edp_init_source_oui(intel_dp, false);
+
 		/*
 		 * When turning on, we need to retry for 1ms to give the sink
 		 * time to wake up.
