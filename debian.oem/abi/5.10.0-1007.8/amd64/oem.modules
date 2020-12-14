@@ -2824,7 +2824,6 @@ megaraid_sas
 mei
 mei-me
 mei-txe
-mei-virtio
 mei_hdcp
 mei_phy
 mei_wdt
@@ -3903,6 +3902,7 @@ reed_solomon
 regmap-i3c
 regmap-sccb
 regmap-sdw
+regmap-sdw-mbq
 regmap-slimbus
 regmap-spi-avmm
 regmap-spmi
@@ -4636,7 +4636,9 @@ snd-soc-rl6231
 snd-soc-rl6347a
 snd-soc-rt1011
 snd-soc-rt1015
+snd-soc-rt1308
 snd-soc-rt1308-sdw
+snd-soc-rt1316-sdw
 snd-soc-rt286
 snd-soc-rt298
 snd-soc-rt5514
@@ -4656,7 +4658,9 @@ snd-soc-rt5682-i2c
 snd-soc-rt5682-sdw
 snd-soc-rt700
 snd-soc-rt711
+snd-soc-rt711-sdca
 snd-soc-rt715
+snd-soc-rt715-sdca
 snd-soc-sgtl5000
 snd-soc-si476x
 snd-soc-sigmadsp
@@ -4668,6 +4672,7 @@ snd-soc-simple-card-utils
 snd-soc-skl_hda_dsp
 snd-soc-skl_nau88l25_ssm4567
 snd-soc-skl_rt286
+snd-soc-sof-sdw
 snd-soc-sof_da7219_max98373
 snd-soc-sof_rt5682
 snd-soc-spdif-rx

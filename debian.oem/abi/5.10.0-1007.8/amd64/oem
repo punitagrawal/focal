@@ -3144,6 +3144,8 @@ EXPORT_SYMBOL	 drivers/net/wireless/ath/ath11k/ath11k 0x00000000	ath11k_core_dei
 EXPORT_SYMBOL	 drivers/net/wireless/ath/ath11k/ath11k 0x00000000	ath11k_core_free
 EXPORT_SYMBOL	 drivers/net/wireless/ath/ath11k/ath11k 0x00000000	ath11k_core_init
 EXPORT_SYMBOL	 drivers/net/wireless/ath/ath11k/ath11k 0x00000000	ath11k_core_pre_init
+EXPORT_SYMBOL	 drivers/net/wireless/ath/ath11k/ath11k 0x00000000	ath11k_core_resume
+EXPORT_SYMBOL	 drivers/net/wireless/ath/ath11k/ath11k 0x00000000	ath11k_core_suspend
 EXPORT_SYMBOL	 drivers/net/wireless/ath/ath11k/ath11k 0x00000000	ath11k_debug_mask
 EXPORT_SYMBOL	 drivers/net/wireless/ath/ath11k/ath11k 0x00000000	ath11k_dp_service_srng
 EXPORT_SYMBOL	 drivers/net/wireless/ath/ath11k/ath11k 0x00000000	ath11k_err
@@ -4046,6 +4048,7 @@ EXPORT_SYMBOL	 drivers/soundwire/soundwire-bus 0x00000000	sdw_nread
 EXPORT_SYMBOL	 drivers/soundwire/soundwire-bus 0x00000000	sdw_nwrite
 EXPORT_SYMBOL	 drivers/soundwire/soundwire-bus 0x00000000	sdw_prepare_stream
 EXPORT_SYMBOL	 drivers/soundwire/soundwire-bus 0x00000000	sdw_read
+EXPORT_SYMBOL	 drivers/soundwire/soundwire-bus 0x00000000	sdw_read_no_pm
 EXPORT_SYMBOL	 drivers/soundwire/soundwire-bus 0x00000000	sdw_release_stream
 EXPORT_SYMBOL	 drivers/soundwire/soundwire-bus 0x00000000	sdw_rows
 EXPORT_SYMBOL	 drivers/soundwire/soundwire-bus 0x00000000	sdw_shutdown_stream
@@ -4056,6 +4059,7 @@ EXPORT_SYMBOL	 drivers/soundwire/soundwire-bus 0x00000000	sdw_stream_add_slave
 EXPORT_SYMBOL	 drivers/soundwire/soundwire-bus 0x00000000	sdw_stream_remove_master
 EXPORT_SYMBOL	 drivers/soundwire/soundwire-bus 0x00000000	sdw_stream_remove_slave
 EXPORT_SYMBOL	 drivers/soundwire/soundwire-bus 0x00000000	sdw_write
+EXPORT_SYMBOL	 drivers/soundwire/soundwire-bus 0x00000000	sdw_write_no_pm
 EXPORT_SYMBOL	 drivers/soundwire/soundwire-cadence 0x00000000	cdns_bus_conf
 EXPORT_SYMBOL	 drivers/soundwire/soundwire-cadence 0x00000000	cdns_reset_page_addr
 EXPORT_SYMBOL	 drivers/soundwire/soundwire-cadence 0x00000000	cdns_set_sdw_stream
@@ -6091,6 +6095,7 @@ EXPORT_SYMBOL	 vmlinux 0x00000000	__dec_zone_page_state
 EXPORT_SYMBOL	 vmlinux 0x00000000	__default_kernel_pte_mask
 EXPORT_SYMBOL	 vmlinux 0x00000000	__delay
 EXPORT_SYMBOL	 vmlinux 0x00000000	__destroy_inode
+EXPORT_SYMBOL	 vmlinux 0x00000000	__dev_direct_xmit
 EXPORT_SYMBOL	 vmlinux 0x00000000	__dev_get_by_flags
 EXPORT_SYMBOL	 vmlinux 0x00000000	__dev_get_by_index
 EXPORT_SYMBOL	 vmlinux 0x00000000	__dev_get_by_name
@@ -7306,7 +7311,6 @@ EXPORT_SYMBOL	 vmlinux 0x00000000	dev_change_proto_down_reason
 EXPORT_SYMBOL	 vmlinux 0x00000000	dev_close
 EXPORT_SYMBOL	 vmlinux 0x00000000	dev_close_many
 EXPORT_SYMBOL	 vmlinux 0x00000000	dev_deactivate
-EXPORT_SYMBOL	 vmlinux 0x00000000	dev_direct_xmit
 EXPORT_SYMBOL	 vmlinux 0x00000000	dev_disable_lro
 EXPORT_SYMBOL	 vmlinux 0x00000000	dev_driver_string
 EXPORT_SYMBOL	 vmlinux 0x00000000	dev_get_by_index
@@ -12104,6 +12108,8 @@ EXPORT_SYMBOL_GPL	 drivers/base/regmap/regmap-sccb 0x00000000	__devm_regmap_init
 EXPORT_SYMBOL_GPL	 drivers/base/regmap/regmap-sccb 0x00000000	__regmap_init_sccb
 EXPORT_SYMBOL_GPL	 drivers/base/regmap/regmap-sdw 0x00000000	__devm_regmap_init_sdw
 EXPORT_SYMBOL_GPL	 drivers/base/regmap/regmap-sdw 0x00000000	__regmap_init_sdw
+EXPORT_SYMBOL_GPL	 drivers/base/regmap/regmap-sdw-mbq 0x00000000	__devm_regmap_init_sdw_mbq
+EXPORT_SYMBOL_GPL	 drivers/base/regmap/regmap-sdw-mbq 0x00000000	__regmap_init_sdw_mbq
 EXPORT_SYMBOL_GPL	 drivers/base/regmap/regmap-slimbus 0x00000000	__devm_regmap_init_slimbus
 EXPORT_SYMBOL_GPL	 drivers/base/regmap/regmap-slimbus 0x00000000	__regmap_init_slimbus
 EXPORT_SYMBOL_GPL	 drivers/base/regmap/regmap-spi-avmm 0x00000000	__devm_regmap_init_spi_avmm
@@ -22158,7 +22164,7 @@ EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	irq_chip_set_wake_parent
 EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	irq_chip_unmask_parent
 EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	irq_create_direct_mapping
 EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	irq_create_fwspec_mapping
-EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	irq_create_mapping
+EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	irq_create_mapping_affinity
 EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	irq_create_of_mapping
 EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	irq_create_strict_mappings
 EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	irq_dispose_mapping
