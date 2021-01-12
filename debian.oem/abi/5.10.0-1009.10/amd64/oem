@@ -12406,11 +12406,6 @@ EXPORT_SYMBOL_GPL	 drivers/gnss/gnss-serial 0x00000000	gnss_serial_register
 EXPORT_SYMBOL_GPL	 drivers/gpio/gpio-generic 0x00000000	bgpio_init
 EXPORT_SYMBOL_GPL	 drivers/gpio/gpio-max730x 0x00000000	__max730x_probe
 EXPORT_SYMBOL_GPL	 drivers/gpio/gpio-max730x 0x00000000	__max730x_remove
-EXPORT_SYMBOL_GPL	 drivers/gpio/gpio-regmap 0x00000000	devm_gpio_regmap_register
-EXPORT_SYMBOL_GPL	 drivers/gpio/gpio-regmap 0x00000000	gpio_regmap_get_drvdata
-EXPORT_SYMBOL_GPL	 drivers/gpio/gpio-regmap 0x00000000	gpio_regmap_register
-EXPORT_SYMBOL_GPL	 drivers/gpio/gpio-regmap 0x00000000	gpio_regmap_set_drvdata
-EXPORT_SYMBOL_GPL	 drivers/gpio/gpio-regmap 0x00000000	gpio_regmap_unregister
 EXPORT_SYMBOL_GPL	 drivers/gpu/drm/bridge/analogix/analogix_dp 0x00000000	analogix_dp_bind
 EXPORT_SYMBOL_GPL	 drivers/gpu/drm/bridge/analogix/analogix_dp 0x00000000	analogix_dp_probe
 EXPORT_SYMBOL_GPL	 drivers/gpu/drm/bridge/analogix/analogix_dp 0x00000000	analogix_dp_remove
@@ -19480,6 +19475,7 @@ EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	__xenmem_reservation_va_mapping_reset
 EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	__xenmem_reservation_va_mapping_update
 EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	_copy_from_iter_flushcache
 EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	_copy_mc_to_iter
+EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	_proc_mkdir
 EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	access_process_vm
 EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	account_locked_vm
 EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	ack_all_badblocks
@@ -19561,7 +19557,6 @@ EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	acpi_os_unmap_memory
 EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	acpi_pci_check_ejectable
 EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	acpi_pci_detect_ejectable
 EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	acpi_pci_find_root
-EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	acpi_pm_set_bridge_wakeup
 EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	acpi_pm_set_device_wakeup
 EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	acpi_pm_wakeup_event
 EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	acpi_processor_claim_cst_control
