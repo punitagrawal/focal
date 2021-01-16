@@ -68,6 +68,12 @@ osi_setup_entries[OSI_STRING_ENTRIES_MAX] __initdata = {
 	 * hybrid graphics supports.
 	 */
 	{"Linux-HPI-Hybrid-Graphics", true},
+	/*
+	 * Linux-Dell-USB4-Wakeup is used by BIOS to workaround auto wakeup
+	 * on Tigerlake. This is done by skipping ALL_MONITOR_OFF when systems
+	 * are going to s2idle.
+	 */
+	{"Linux-Dell-USB4-Wakeup", true},
 };
 
 static u32 acpi_osi_handler(acpi_string interface, u32 supported)
