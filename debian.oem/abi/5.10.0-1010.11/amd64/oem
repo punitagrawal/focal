@@ -1300,6 +1300,7 @@ EXPORT_SYMBOL	 drivers/infiniband/core/ib_core 0x00000000	ib_device_get_by_netde
 EXPORT_SYMBOL	 drivers/infiniband/core/ib_core 0x00000000	ib_device_put
 EXPORT_SYMBOL	 drivers/infiniband/core/ib_core 0x00000000	ib_device_set_netdev
 EXPORT_SYMBOL	 drivers/infiniband/core/ib_core 0x00000000	ib_dispatch_event
+EXPORT_SYMBOL	 drivers/infiniband/core/ib_core 0x00000000	ib_dma_virt_map_sg
 EXPORT_SYMBOL	 drivers/infiniband/core/ib_core 0x00000000	ib_drain_qp
 EXPORT_SYMBOL	 drivers/infiniband/core/ib_core 0x00000000	ib_drain_rq
 EXPORT_SYMBOL	 drivers/infiniband/core/ib_core 0x00000000	ib_drain_sq
@@ -7541,7 +7542,6 @@ EXPORT_SYMBOL	 vmlinux 0x00000000	dma_sync_wait
 EXPORT_SYMBOL	 vmlinux 0x00000000	dma_unmap_page_attrs
 EXPORT_SYMBOL	 vmlinux 0x00000000	dma_unmap_resource
 EXPORT_SYMBOL	 vmlinux 0x00000000	dma_unmap_sg_attrs
-EXPORT_SYMBOL	 vmlinux 0x00000000	dma_virt_ops
 EXPORT_SYMBOL	 vmlinux 0x00000000	dmaengine_get
 EXPORT_SYMBOL	 vmlinux 0x00000000	dmaengine_get_unmap_data
 EXPORT_SYMBOL	 vmlinux 0x00000000	dmaengine_put
@@ -7575,6 +7575,7 @@ EXPORT_SYMBOL	 vmlinux 0x00000000	down
 EXPORT_SYMBOL	 vmlinux 0x00000000	down_interruptible
 EXPORT_SYMBOL	 vmlinux 0x00000000	down_killable
 EXPORT_SYMBOL	 vmlinux 0x00000000	down_read
+EXPORT_SYMBOL	 vmlinux 0x00000000	down_read_interruptible
 EXPORT_SYMBOL	 vmlinux 0x00000000	down_read_killable
 EXPORT_SYMBOL	 vmlinux 0x00000000	down_read_trylock
 EXPORT_SYMBOL	 vmlinux 0x00000000	down_timeout
@@ -19188,6 +19189,7 @@ EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	__fat_fs_error
 EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	__fib_lookup
 EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	__fl6_sock_lookup
 EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	__flush_tlb_all
+EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	__fput_sync
 EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	__free_iova
 EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	__fscrypt_encrypt_symlink
 EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	__fscrypt_inode_uses_inline_crypto
@@ -19240,6 +19242,7 @@ EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	__memcpy_flushcache
 EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	__mmc_send_status
 EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	__mmdrop
 EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	__mmu_notifier_register
+EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	__mnt_drop_write
 EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	__mnt_is_readonly
 EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	__ndisc_fill_addr_option
 EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	__netdev_watchdog_up
@@ -19326,6 +19329,7 @@ EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	__strp_unpause
 EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	__supported_pte_mask
 EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	__suspend_report_result
 EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	__symbol_get
+EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	__sync_filesystem
 EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	__synth_event_gen_cmd_start
 EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	__tcp_bpf_recvmsg
 EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	__tcp_send_ack
@@ -19635,6 +19639,7 @@ EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	alg_test
 EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	all_vm_events
 EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	alloc_dax
 EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	alloc_dax_region
+EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	alloc_empty_file
 EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	alloc_iova
 EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	alloc_iova_fast
 EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	alloc_page_buffers
@@ -20521,6 +20526,8 @@ EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	cs47l24_spi_regmap
 EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	css_next_descendant_pre
 EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	current_is_async
 EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	current_save_fsgs
+EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	d_exchange
+EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	d_walk
 EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	da903x_clr_bits
 EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	da903x_read
 EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	da903x_reads
@@ -21137,9 +21144,12 @@ EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	dmi_memdev_type
 EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	dmi_walk
 EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	do_exit
 EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	do_machine_check
+EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	do_splice_from
+EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	do_splice_to
 EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	do_take_over_console
 EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	do_tcp_sendpages
 EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	do_trace_rcu_torture_read
+EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	do_truncate
 EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	do_unbind_con_driver
 EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	do_unregister_con_driver
 EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	do_xdp_generic
@@ -21464,6 +21474,7 @@ EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	fsnotify_alloc_group
 EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	fsnotify_destroy_mark
 EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	fsnotify_find_mark
 EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	fsnotify_get_cookie
+EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	fsnotify_get_group
 EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	fsnotify_init_mark
 EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	fsnotify_put_group
 EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	fsnotify_put_mark
@@ -22224,6 +22235,7 @@ EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	irq_work_sync
 EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	irqchip_fwnode_ops
 EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	irqd_cfg
 EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	is_binary_blacklisted
+EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	is_current_mnt_ns
 EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	is_dock_device
 EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	is_hash_blacklisted
 EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	is_hpet_enabled
@@ -22236,6 +22248,7 @@ EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	is_uv_system
 EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	is_virtio_device
 EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	isa_register_driver
 EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	isa_unregister_driver
+EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	iterate_mounts
 EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	itlb_multihit_kvm_mitigation
 EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	jump_label_rate_limit
 EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	jump_label_update_timeout
@@ -22455,6 +22468,7 @@ EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	locks_release_private
 EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	look_up_OID
 EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	lookup_address
 EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	lookup_address_in_mm
+EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	loop_backing_file
 EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	lp8788_read_byte
 EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	lp8788_read_multi_bytes
 EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	lp8788_update_bits
@@ -22828,6 +22842,7 @@ EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	part_start_io_acct
 EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	paste_selection
 EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	pat_enabled
 EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	pat_pfn_immune_to_uc_mtrr
+EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	path_noexec
 EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	pcap_adc_async
 EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	pcap_adc_sync
 EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	pcap_set_ts_bits
@@ -23901,13 +23916,21 @@ EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	sec_irq_init
 EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	secure_ipv4_port_ephemeral
 EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	secure_tcp_seq
 EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	security_file_ioctl
+EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	security_file_permission
 EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	security_inode_create
 EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	security_inode_mkdir
+EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	security_inode_permission
 EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	security_inode_setattr
 EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	security_kernel_load_data
 EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	security_kernel_post_load_data
 EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	security_kernel_post_read_file
 EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	security_kernel_read_file
+EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	security_path_chmod
+EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	security_path_chown
+EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	security_path_link
+EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	security_path_rmdir
+EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	security_path_symlink
+EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	security_path_truncate
 EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	securityfs_create_dir
 EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	securityfs_create_file
 EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	securityfs_create_symlink
@@ -23976,6 +23999,7 @@ EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	set_secondary_fwnode
 EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	set_selection_kernel
 EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	set_task_ioprio
 EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	set_worker_desc
+EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	setfl
 EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	setup_APIC_eilvt
 EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	sev_enable_key
 EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	sfi_table_parse
@@ -24313,6 +24337,7 @@ EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	task_cputime_adjusted
 EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	task_handoff_register
 EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	task_handoff_unregister
 EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	task_user_regset_view
+EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	task_work_run
 EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	tcp_abort
 EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	tcp_bpf_sendmsg_redir
 EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	tcp_ca_get_key_by_name
@@ -24595,6 +24620,7 @@ EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	unregister_xenstore_notifier
 EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	unshare_fs_struct
 EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	unwind_get_return_address
 EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	unwind_next_frame
+EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	update_time
 EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	uprobe_register
 EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	uprobe_register_refctr
 EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	uprobe_unregister
@@ -24826,15 +24852,18 @@ EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	vfio_virqfd_enable
 EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	vfs_cancel_lock
 EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	vfs_fallocate
 EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	vfs_getxattr
+EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	vfs_getxattr_alloc
 EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	vfs_kern_mount
 EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	vfs_listxattr
 EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	vfs_lock_file
+EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	vfs_read
 EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	vfs_removexattr
 EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	vfs_setlease
 EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	vfs_setxattr
 EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	vfs_submount
 EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	vfs_test_lock
 EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	vfs_truncate
+EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	vfs_write
 EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	vga_default_device
 EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	videomode_from_timing
 EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	videomode_from_timings
