@@ -2859,8 +2859,20 @@ static void gen8_irq_reset(struct drm_i915_private *dev_priv)
 	GEN3_IRQ_RESET(uncore, GEN8_DE_MISC_);
 	GEN3_IRQ_RESET(uncore, GEN8_PCU_);
 
-	if (HAS_PCH_SPLIT(dev_priv))
+	if (INTEL_PCH_TYPE(dev_priv) >= PCH_ICP)
+		GEN3_IRQ_RESET(uncore, SDE);
+	else if (HAS_PCH_SPLIT(dev_priv))
 		ibx_irq_reset(dev_priv);
+
+	/* Wa_14010685332:cnp/cmp,tgp,adp */
+	if (INTEL_PCH_TYPE(dev_priv) == PCH_CNP ||
+	    (INTEL_PCH_TYPE(dev_priv) >= PCH_TGP &&
+	    INTEL_PCH_TYPE(dev_priv) < PCH_DG1)) {
+		intel_uncore_rmw(uncore, SOUTH_CHICKEN1,
+				 SBCLK_RUN_REFCLK_DIS, SBCLK_RUN_REFCLK_DIS);
+		intel_uncore_rmw(uncore, SOUTH_CHICKEN1,
+				 SBCLK_RUN_REFCLK_DIS, 0);
+	}
 }
 
 static void gen11_display_irq_reset(struct drm_i915_private *dev_priv)
@@ -3201,6 +3213,10 @@ static void spt_hpd_irq_setup(struct drm_i915_private *dev_priv)
 	ibx_display_interrupt_update(dev_priv, hotplug_irqs, enabled_irqs);
 
 	spt_hpd_detection_setup(dev_priv);
+
+	if (INTEL_PCH_TYPE(dev_priv) >= PCH_ICP)
+		icp_hpd_irq_setup(dev_priv,
+				  ICP_DDI_HPD_ENABLE_MASK, ICP_TC_HPD_ENABLE_MASK);
 }
 
 static void ilk_hpd_detection_setup(struct drm_i915_private *dev_priv)
@@ -3474,20 +3490,6 @@ static void gen8_de_irq_postinstall(struct drm_i915_private *dev_priv)
 	}
 }
 
-static void gen8_irq_postinstall(struct drm_i915_private *dev_priv)
-{
-	if (HAS_PCH_SPLIT(dev_priv))
-		ibx_irq_pre_postinstall(dev_priv);
-
-	gen8_gt_irq_postinstall(&dev_priv->gt);
-	gen8_de_irq_postinstall(dev_priv);
-
-	if (HAS_PCH_SPLIT(dev_priv))
-		ibx_irq_postinstall(dev_priv);
-
-	gen8_master_intr_enable(dev_priv->uncore.regs);
-}
-
 static void icp_irq_postinstall(struct drm_i915_private *dev_priv)
 {
 	u32 mask = SDE_GMBUS_ICP;
@@ -3513,6 +3515,22 @@ static void icp_irq_postinstall(struct drm_i915_private *dev_priv)
 		icp_ddi_hpd_detection_setup(dev_priv, ICP_DDI_HPD_ENABLE_MASK);
 		icp_tc_hpd_detection_setup(dev_priv, ICP_TC_HPD_ENABLE_MASK);
 	}
+}
+
+static void gen8_irq_postinstall(struct drm_i915_private *dev_priv)
+{
+	if (INTEL_PCH_TYPE(dev_priv) >= PCH_ICP)
+		icp_irq_postinstall(dev_priv);
+	else if (HAS_PCH_SPLIT(dev_priv))
+		ibx_irq_pre_postinstall(dev_priv);
+
+	gen8_gt_irq_postinstall(&dev_priv->gt);
+	gen8_de_irq_postinstall(dev_priv);
+
+	if (HAS_PCH_SPLIT(dev_priv))
+		ibx_irq_postinstall(dev_priv);
+
+	gen8_master_intr_enable(dev_priv->uncore.regs);
 }
 
 static void gen11_irq_postinstall(struct drm_i915_private *dev_priv)
