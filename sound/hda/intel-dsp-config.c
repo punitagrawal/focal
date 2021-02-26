@@ -307,7 +307,7 @@ static const struct config_entry config_table[] = {
 		.device = 0xa0c8,
 	},
 	{
-		.flags = FLAG_SOF | FLAG_SOF_ONLY_IF_DMIC_OR_SOUNDWIRE,
+		.flags = FLAG_SOF,
 		.device = 0x43c8,
 	},
 #endif
