@@ -13133,6 +13133,7 @@ EXPORT_SYMBOL_GPL	 drivers/md/dm-bufio 0x00000000	dm_bufio_get_block_number
 EXPORT_SYMBOL_GPL	 drivers/md/dm-bufio 0x00000000	dm_bufio_get_block_size
 EXPORT_SYMBOL_GPL	 drivers/md/dm-bufio 0x00000000	dm_bufio_get_client
 EXPORT_SYMBOL_GPL	 drivers/md/dm-bufio 0x00000000	dm_bufio_get_device_size
+EXPORT_SYMBOL_GPL	 drivers/md/dm-bufio 0x00000000	dm_bufio_get_dm_io_client
 EXPORT_SYMBOL_GPL	 drivers/md/dm-bufio 0x00000000	dm_bufio_issue_discard
 EXPORT_SYMBOL_GPL	 drivers/md/dm-bufio 0x00000000	dm_bufio_issue_flush
 EXPORT_SYMBOL_GPL	 drivers/md/dm-bufio 0x00000000	dm_bufio_mark_buffer_dirty
@@ -22262,7 +22263,7 @@ EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	kdb_register
 EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	kdb_register_flags
 EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	kdb_unregister
 EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	kern_mount
-EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	kernel_fpu_begin
+EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	kernel_fpu_begin_mask
 EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	kernel_fpu_end
 EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	kernel_halt
 EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	kernel_kobj
@@ -25092,7 +25093,6 @@ EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	xenbus_match
 EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	xenbus_mkdir
 EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	xenbus_otherend_changed
 EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	xenbus_printf
-EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	xenbus_probe
 EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	xenbus_probe_devices
 EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	xenbus_probe_node
 EXPORT_SYMBOL_GPL	 vmlinux 0x00000000	xenbus_read
