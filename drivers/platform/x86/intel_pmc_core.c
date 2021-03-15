@@ -863,13 +863,35 @@ out_unlock:
 }
 DEFINE_SHOW_ATTRIBUTE(pmc_core_pll);
 
+static int pmc_core_write_ltr_ignore(u32 value)
+{
+	struct pmc_dev *pmcdev = &pmc;
+	const struct pmc_reg_map *map = pmcdev->map;
+	u32 fd;
+	int err = 0;
+
+	mutex_lock(&pmcdev->lock);
+
+	if (fls(value) > map->ltr_ignore_max) {
+		err = -EINVAL;
+		goto out_unlock;
+	}
+
+	fd = pmc_core_reg_read(pmcdev, map->ltr_ignore_offset);
+	fd |= value;
+	pmc_core_reg_write(pmcdev, map->ltr_ignore_offset, fd);
+
+out_unlock:
+	mutex_unlock(&pmcdev->lock);
+
+	return err;
+}
+
 static ssize_t pmc_core_ltr_ignore_write(struct file *file,
 					 const char __user *userbuf,
 					 size_t count, loff_t *ppos)
 {
-	struct pmc_dev *pmcdev = &pmc;
-	const struct pmc_reg_map *map = pmcdev->map;
-	u32 val, buf_size, fd;
+	u32 buf_size, val;
 	int err;
 
 	buf_size = count < 64 ? count : 64;
@@ -878,19 +900,8 @@ static ssize_t pmc_core_ltr_ignore_write(struct file *file,
 	if (err)
 		return err;
 
-	mutex_lock(&pmcdev->lock);
+	err = pmc_core_write_ltr_ignore(1U << val);
 
-	if (val > map->ltr_ignore_max) {
-		err = -EINVAL;
-		goto out_unlock;
-	}
-
-	fd = pmc_core_reg_read(pmcdev, map->ltr_ignore_offset);
-	fd |= (1U << val);
-	pmc_core_reg_write(pmcdev, map->ltr_ignore_offset, fd);
-
-out_unlock:
-	mutex_unlock(&pmcdev->lock);
 	return err == 0 ? count : err;
 }
 
@@ -1189,6 +1200,15 @@ static int quirk_xtal_ignore(const struct dmi_system_id *id)
 	return 0;
 }
 
+static int quirk_ltr_ignore(u32 val)
+{
+	int err;
+
+	err = pmc_core_write_ltr_ignore(val);
+
+	return err;
+}
+
 static const struct dmi_system_id pmc_core_dmi_table[]  = {
 	{
 	.callback = quirk_xtal_ignore,
@@ -1243,6 +1263,15 @@ static int pmc_core_probe(struct platform_device *pdev)
 	platform_set_drvdata(pdev, pmcdev);
 	pmcdev->pmc_xram_read_bit = pmc_core_check_read_lock_bit();
 	dmi_check_system(pmc_core_dmi_table);
+
+	/*
+	 * On TGL, due to a hardware limitation, the GBE LTR blocks PC10 when
+	 * a cable is attached. Tell the PMC to ignore it.
+	 */
+	if (pmcdev->map == &tgl_reg_map) {
+		dev_dbg(&pdev->dev, "ignoring GBE LTR\n");
+		quirk_ltr_ignore(1U << 3);
+	}
 
 	pmc_core_dbgfs_register(pmcdev);
 
