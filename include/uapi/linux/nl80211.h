@@ -2527,6 +2527,10 @@ enum nl80211_commands {
  *	override mask. Used with NL80211_ATTR_S1G_CAPABILITY in
  *	NL80211_CMD_ASSOCIATE or NL80211_CMD_CONNECT.
  *
+ * @NL80211_ATTR_RECONNECT_REQUESTED: flag attribute, used with deauth and
+ *	disassoc events to indicate that an immediate reconnect to the AP
+ *	is desired.
+ *
  * @NUM_NL80211_ATTR: total number of nl80211_attrs available
  * @NL80211_ATTR_MAX: highest attribute number currently defined
  * @__NL80211_ATTR_AFTER_LAST: internal use
@@ -3015,6 +3019,8 @@ enum nl80211_attrs {
 
 	NL80211_ATTR_S1G_CAPABILITY,
 	NL80211_ATTR_S1G_CAPABILITY_MASK,
+
+	NL80211_ATTR_RECONNECT_REQUESTED,
 
 	/* add attributes here, update the policy in nl80211.c */
 
