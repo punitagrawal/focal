@@ -24,7 +24,7 @@
  *    Keith Packard <keithp@keithp.com>
  *
  */
-
+#include <linux/dmi.h>
 #include <linux/export.h>
 #include <linux/i2c.h>
 #include <linux/notifier.h>
@@ -153,6 +153,16 @@ static void vlv_init_panel_power_sequencer(struct intel_encoder *encoder,
 static void vlv_steal_power_sequencer(struct drm_i915_private *dev_priv,
 				      enum pipe pipe);
 static void intel_dp_unset_edid(struct intel_dp *intel_dp);
+
+static const struct dmi_system_id dpcd_backlight_quirk[] = {
+	{
+	    .matches = {
+		    DMI_MATCH(DMI_SYS_VENDOR, "Dell Inc."),
+		    DMI_MATCH(DMI_PRODUCT_NAME, "Precision 7560"),
+	    },
+	},
+	{},
+};
 
 /* update sink rates from dpcd */
 static void intel_dp_set_sink_rates(struct intel_dp *intel_dp)
@@ -3554,7 +3564,8 @@ void intel_dp_set_power(struct intel_dp *intel_dp, u8 mode)
 
 		/* Write the source OUI as early as possible */
 		if (intel_dp_is_edp(intel_dp))
-			intel_edp_init_source_oui(intel_dp, false);
+			if (dmi_check_system(dpcd_backlight_quirk))
+				intel_edp_init_source_oui(intel_dp, false);
 
 		/*
 		 * When turning on, we need to retry for 1ms to give the sink
