@@ -8095,8 +8095,30 @@ static void intel_crtc_readout_derived_state(struct intel_crtc_state *crtc_state
 
 	drm_mode_copy(pipe_mode, adjusted_mode);
 
-	intel_mode_from_crtc_timings(pipe_mode, pipe_mode);
-	intel_mode_from_crtc_timings(adjusted_mode, adjusted_mode);
+	if (crtc_state->splitter.enable) {
+		int n = crtc_state->splitter.link_count;
+		int overlap = crtc_state->splitter.pixel_overlap;
+
+		/*
+		 * eDP MSO uses segment timings from EDID for transcoder
+		 * timings, but full mode for everything else.
+		 *
+		 * h_full = (h_segment - pixel_overlap) * link_count
+		 */
+		pipe_mode->crtc_hdisplay = (pipe_mode->crtc_hdisplay - overlap) * n;
+		pipe_mode->crtc_hblank_start = (pipe_mode->crtc_hblank_start - overlap) * n;
+		pipe_mode->crtc_hblank_end = (pipe_mode->crtc_hblank_end - overlap) * n;
+		pipe_mode->crtc_hsync_start = (pipe_mode->crtc_hsync_start - overlap) * n;
+		pipe_mode->crtc_hsync_end = (pipe_mode->crtc_hsync_end - overlap) * n;
+		pipe_mode->crtc_htotal = (pipe_mode->crtc_htotal - overlap) * n;
+		pipe_mode->crtc_clock *= n;
+
+		intel_mode_from_crtc_timings(pipe_mode, pipe_mode);
+		intel_mode_from_crtc_timings(adjusted_mode, pipe_mode);
+	} else {
+		intel_mode_from_crtc_timings(pipe_mode, pipe_mode);
+		intel_mode_from_crtc_timings(adjusted_mode, adjusted_mode);
+	}
 
 	intel_crtc_compute_pixel_rate(crtc_state);
 
@@ -13145,6 +13167,11 @@ static void intel_dump_pipe_config(const struct intel_crtc_state *pipe_config,
 		    "port sync: master transcoder: %s, slave transcoder bitmask = 0x%x\n",
 		    transcoder_name(pipe_config->master_transcoder),
 		    pipe_config->sync_mode_slaves_mask);
+
+	drm_dbg_kms(&dev_priv->drm, "splitter: %s, link count %d, overlap %d\n",
+		    enableddisabled(pipe_config->splitter.enable),
+		    pipe_config->splitter.link_count,
+		    pipe_config->splitter.pixel_overlap);
 
 	if (pipe_config->has_pch_encoder)
 		intel_dump_m_n_config(pipe_config, "fdi",

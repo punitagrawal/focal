@@ -1095,6 +1095,13 @@ struct intel_crtc_state {
 	struct intel_dsb *dsb;
 
 	u32 psr2_man_track_ctl;
+
+	/* Stream Splitter for eDP MSO */
+	struct {
+		bool enable;
+		u8 link_count;
+		u8 pixel_overlap;
+	} splitter;
 };
 
 enum intel_pipe_crc_source {
