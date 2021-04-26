@@ -831,6 +831,7 @@ firmware:       iwlwifi-QuZ-a0-jf-b0-59.ucode
 firmware:       iwlwifi-SoSnj-a0-gf-a0-59.ucode
 firmware:       iwlwifi-SoSnj-a0-gf4-a0-59.ucode
 firmware:       iwlwifi-SoSnj-a0-hr-b0-59.ucode
+firmware:       iwlwifi-SoSnj-a0-mr-a0-59.ucode
 firmware:       iwlwifi-cc-a0-59.ucode
 firmware:       iwlwifi-ma-a0-gf-a0-59.ucode
 firmware:       iwlwifi-ma-a0-mr-a0-59.ucode
@@ -1574,6 +1575,8 @@ firmware:       rtl_bt/rtl8821a_config.bin
 firmware:       rtl_bt/rtl8821a_fw.bin
 firmware:       rtl_bt/rtl8822b_config.bin
 firmware:       rtl_bt/rtl8822b_fw.bin
+firmware:       rtl_bt/rtl8852au_config.bin
+firmware:       rtl_bt/rtl8852au_fw.bin
 firmware:       rtl_nic/rtl8105e-1.fw
 firmware:       rtl_nic/rtl8106e-1.fw
 firmware:       rtl_nic/rtl8106e-2.fw

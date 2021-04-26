@@ -1850,6 +1850,7 @@ hih6130
 hinic
 hio
 hisi-spmi-controller
+hm11b1
 hmc425a
 hmc5843_core
 hmc5843_i2c
@@ -2087,6 +2088,9 @@ int340x_thermal_zone
 int51x1
 intel-cstate
 intel-hid
+intel-ipu6
+intel-ipu6-isys
+intel-ipu6-psys
 intel-ish-ipc
 intel-ishtp
 intel-ishtp-hid
@@ -2112,6 +2116,7 @@ intel_cht_int33fe
 intel_chtdc_ti_pwrbtn
 intel_int0002_vgpio
 intel_ips
+intel_lpss_usb
 intel_menlow
 intel_mid_powerbtn
 intel_mid_thermal
@@ -3357,6 +3362,7 @@ orinoco_tmd
 orinoco_usb
 oti6858
 otm3225a
+ov01a1s
 ov13858
 ov2640
 ov2659
@@ -3586,6 +3592,7 @@ pnd2_edac
 poly1305-x86_64
 poly1305_generic
 port100
+power_ctrl_logic
 powermate
 powr1220
 ppa
