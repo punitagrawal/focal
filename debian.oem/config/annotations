@@ -10010,6 +10010,7 @@ CONFIG_ASUS_LAPTOP                              policy<{'amd64': 'm'}>
 CONFIG_ASUS_WIRELESS                            policy<{'amd64': 'm'}>
 CONFIG_EEEPC_LAPTOP                             policy<{'amd64': 'm'}>
 CONFIG_DCDBAS                                   policy<{'amd64': 'm'}>
+CONFIG_X86_PLATFORM_DRIVERS_DELL                policy<{'amd64': 'y'}>
 CONFIG_DELL_RBTN                                policy<{'amd64': 'm'}>
 CONFIG_DELL_RBU                                 policy<{'amd64': 'm'}>
 CONFIG_DELL_SMO8800                             policy<{'amd64': 'm'}>
@@ -10071,6 +10072,7 @@ CONFIG_DELL_SMBIOS_WMI                          policy<{'amd64': 'y'}>
 CONFIG_DELL_SMBIOS_SMM                          policy<{'amd64': 'y'}>
 CONFIG_DELL_LAPTOP                              policy<{'amd64': 'm'}>
 CONFIG_DELL_WMI                                 policy<{'amd64': 'm'}>
+CONFIG_DELL_PRIVACY                             policy<{'amd64': 'm'}>
 
 # Menu: Device Drivers >> X86 Platform Specific Device Drivers >> Intel Speed Select Technology interface support
 CONFIG_INTEL_SPEED_SELECT_INTERFACE             policy<{'amd64': 'm'}>
@@ -10101,6 +10103,7 @@ CONFIG_ASUS_NB_WMI                              policy<{'amd64': 'm'}>
 CONFIG_EEEPC_WMI                                policy<{'amd64': 'm'}>
 CONFIG_DELL_WMI_AIO                             policy<{'amd64': 'm'}>
 CONFIG_DELL_WMI_LED                             policy<{'amd64': 'm'}>
+CONFIG_DELL_WMI_SYSMAN                          policy<{'amd64': 'm'}>
 CONFIG_HP_WMI                                   policy<{'amd64': 'm'}>
 CONFIG_IDEAPAD_LAPTOP                           policy<{'amd64': 'm'}>
 CONFIG_SURFACE3_WMI                             policy<{'amd64': 'm'}>
