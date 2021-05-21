@@ -74,6 +74,13 @@ osi_setup_entries[OSI_STRING_ENTRIES_MAX] __initdata = {
 	 * are going to s2idle.
 	 */
 	{"Linux-Dell-USB4-Wakeup", true},
+	/*
+	 * Linux-Dell-USB4-NVWakeup is used by BIOS to skip the Intel Reference
+	 * ACPI method PGSC which is used for clock source control of the
+	 * PCIe root port of the NV GPU on Tigerlake-H. Keep the clock source
+	 * on to avoid the power transition fail during enter/exit s2idle.
+	 */
+	{"Linux-Dell-USB4-NVWakeup", true},
 };
 
 static u32 acpi_osi_handler(acpi_string interface, u32 supported)
