@@ -389,16 +389,10 @@ static void acpi_processor_power_verify_c3(struct acpi_processor *pr,
 	return;
 }
 
-static bool acpi_processor_vendor_amd(void)
-{
-	return boot_cpu_data.x86_vendor == X86_VENDOR_AMD;
-}
-
 static int acpi_processor_power_verify(struct acpi_processor *pr)
 {
 	unsigned int i;
 	unsigned int working = 0;
-	u32 latency2, latency3;
 
 	pr->power.timer_broadcast_on_state = INT_MAX;
 
@@ -414,11 +408,9 @@ static int acpi_processor_power_verify(struct acpi_processor *pr)
 			if (!cx->address)
 				break;
 			cx->valid = 1;
-			latency2 = cx->latency;
 			break;
 
 		case ACPI_STATE_C3:
-			latency3 = cx->latency;
 			acpi_processor_power_verify_c3(pr, cx);
 			break;
 		}
@@ -428,15 +420,6 @@ static int acpi_processor_power_verify(struct acpi_processor *pr)
 		lapic_timer_check_state(i, pr, cx);
 		tsc_check_state(cx->type);
 		working++;
-	}
-
-	/* Some AMD BIOSes mistakenly have higher C2 latencies than C3 latencies.
-	 * In order to properly support S0ix, the platform needs to not skip C states.
-	 * Correct the latencies here.
-	 */
-	if (acpi_processor_vendor_amd() && (latency2 >= latency3)) {
-		pr->power.states[2].latency = 18;
-		pr->power.states[3].latency = 350;
 	}
 
 	lapic_timer_propagate_broadcast(pr);
