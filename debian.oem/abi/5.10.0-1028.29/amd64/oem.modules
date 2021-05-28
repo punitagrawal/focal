@@ -1009,6 +1009,7 @@ de4x5
 decnet
 defxx
 dell-laptop
+dell-privacy-wmi
 dell-rbtn
 dell-smbios
 dell-smm-hwmon
@@ -1018,6 +1019,7 @@ dell-wmi
 dell-wmi-aio
 dell-wmi-descriptor
 dell-wmi-led
+dell-wmi-sysman
 dell_rbu
 denali
 denali_pci
