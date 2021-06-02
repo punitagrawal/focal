@@ -3082,6 +3082,12 @@ static void icp_hpd_irq_setup(struct drm_i915_private *dev_priv,
 		icp_tc_hpd_detection_setup(dev_priv, tc_enable_mask);
 }
 
+static void gen10_hpd_irq_setup(struct drm_i915_private *dev_priv)
+{
+	icp_hpd_irq_setup(dev_priv,
+			  ICP_DDI_HPD_ENABLE_MASK, ICP_TC_HPD_ENABLE_MASK);
+}
+
 /*
  * EHL doesn't need most of gen11_hpd_irq_setup, it's handling only the
  * equivalent of SDE.
@@ -4004,6 +4010,8 @@ void intel_irq_init(struct drm_i915_private *dev_priv)
 			dev_priv->display.hpd_irq_setup = gen11_hpd_irq_setup;
 		else if (IS_GEN9_LP(dev_priv))
 			dev_priv->display.hpd_irq_setup = bxt_hpd_irq_setup;
+		else if (INTEL_PCH_TYPE(dev_priv) >= PCH_ICP)
+			dev_priv->display.hpd_irq_setup = gen10_hpd_irq_setup;
 		else if (INTEL_PCH_TYPE(dev_priv) >= PCH_SPT)
 			dev_priv->display.hpd_irq_setup = spt_hpd_irq_setup;
 		else
