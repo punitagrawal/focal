@@ -4670,6 +4670,8 @@ snd-soc-sigmadsp-regmap
 snd-soc-simple-amplifier
 snd-soc-simple-card
 snd-soc-simple-card-utils
+snd-soc-skl
+snd-soc-skl-ssp-clk
 snd-soc-skl_hda_dsp
 snd-soc-skl_nau88l25_ssm4567
 snd-soc-skl_rt286
