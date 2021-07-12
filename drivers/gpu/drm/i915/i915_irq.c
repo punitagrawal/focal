@@ -2738,24 +2738,6 @@ static void ibx_irq_reset(struct drm_i915_private *dev_priv)
 		I915_WRITE(SERR_INT, 0xffffffff);
 }
 
-/*
- * SDEIER is also touched by the interrupt handler to work around missed PCH
- * interrupts. Hence we can't update it after the interrupt handler is enabled -
- * instead we unconditionally enable all PCH interrupt sources here, but then
- * only unmask them as needed with SDEIMR.
- *
- * This function needs to be called before interrupts are enabled.
- */
-static void ibx_irq_pre_postinstall(struct drm_i915_private *dev_priv)
-{
-	if (HAS_PCH_NOP(dev_priv))
-		return;
-
-	drm_WARN_ON(&dev_priv->drm, I915_READ(SDEIER) != 0);
-	I915_WRITE(SDEIER, 0xffffffff);
-	POSTING_READ(SDEIER);
-}
-
 static void vlv_display_irq_reset(struct drm_i915_private *dev_priv)
 {
 	struct intel_uncore *uncore = &dev_priv->uncore;
@@ -3284,8 +3266,20 @@ static void bxt_hpd_irq_setup(struct drm_i915_private *dev_priv)
 	__bxt_hpd_detection_setup(dev_priv, enabled_irqs);
 }
 
+/*
+ * SDEIER is also touched by the interrupt handler to work around missed PCH
+ * interrupts. Hence we can't update it after the interrupt handler is enabled -
+ * instead we unconditionally enable all PCH interrupt sources here, but then
+ * only unmask them as needed with SDEIMR.
+ *
+ * Note that we currently do this after installing the interrupt handler,
+ * but before we enable the master interrupt. That should be sufficient
+ * to avoid races with the irq handler, assuming we have MSI. Shared legacy
+ * interrupts could still race.
+ */
 static void ibx_irq_postinstall(struct drm_i915_private *dev_priv)
 {
+	struct intel_uncore *uncore = &dev_priv->uncore;
 	u32 mask;
 
 	if (HAS_PCH_NOP(dev_priv))
@@ -3298,14 +3292,7 @@ static void ibx_irq_postinstall(struct drm_i915_private *dev_priv)
 	else
 		mask = SDE_GMBUS_CPT;
 
-	gen3_assert_iir_is_zero(&dev_priv->uncore, SDEIIR);
-	I915_WRITE(SDEIMR, ~mask);
-
-	if (HAS_PCH_IBX(dev_priv) || HAS_PCH_CPT(dev_priv) ||
-	    HAS_PCH_LPT(dev_priv))
-		ibx_hpd_detection_setup(dev_priv);
-	else
-		spt_hpd_detection_setup(dev_priv);
+	GEN3_IRQ_INIT(uncore, SDE, ~mask, 0xffffffff);
 }
 
 static void ilk_irq_postinstall(struct drm_i915_private *dev_priv)
@@ -3335,27 +3322,12 @@ static void ilk_irq_postinstall(struct drm_i915_private *dev_priv)
 
 	dev_priv->irq_mask = ~display_mask;
 
-	ibx_irq_pre_postinstall(dev_priv);
-
-	GEN3_IRQ_INIT(uncore, DE, dev_priv->irq_mask,
-		      display_mask | extra_mask);
+	ibx_irq_postinstall(dev_priv);
 
 	gen5_gt_irq_postinstall(&dev_priv->gt);
 
-	ilk_hpd_detection_setup(dev_priv);
-
-	ibx_irq_postinstall(dev_priv);
-
-	if (IS_IRONLAKE_M(dev_priv)) {
-		/* Enable PCU event interrupts
-		 *
-		 * spinlocking not required here for correctness since interrupt
-		 * setup is guaranteed to run in single-threaded context. But we
-		 * need it to make the assert_spin_locked happy. */
-		spin_lock_irq(&dev_priv->irq_lock);
-		ilk_enable_display_irq(dev_priv, DE_PCU_EVENT);
-		spin_unlock_irq(&dev_priv->irq_lock);
-	}
+	GEN3_IRQ_INIT(uncore, DE, dev_priv->irq_mask,
+		      display_mask | extra_mask);
 }
 
 void valleyview_enable_display_irqs(struct drm_i915_private *dev_priv)
@@ -3490,9 +3462,6 @@ static void gen8_irq_postinstall(struct drm_i915_private *dev_priv)
 
 	gen8_gt_irq_postinstall(&dev_priv->gt);
 	gen8_de_irq_postinstall(dev_priv);
-
-	if (HAS_PCH_SPLIT(dev_priv))
-		ibx_irq_postinstall(dev_priv);
 
 	gen8_master_intr_enable(dev_priv->uncore.regs);
 }
