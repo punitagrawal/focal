@@ -53,6 +53,15 @@ static void quirk_increase_ddi_disabled_time(struct drm_i915_private *i915)
 	drm_info(&i915->drm, "Applying Increase DDI Disabled quirk\n");
 }
 
+static void quirk_enable_psr(struct drm_i915_private *i915)
+{
+	/* Only enable if not explicitly set */
+	if (i915->params.enable_psr == -1) {
+		i915->params.enable_psr = true;
+		drm_info(&i915->drm, "Defaulting panel self refresh (PSR) to enabled\n");
+	}
+}
+
 struct intel_quirk {
 	int device;
 	int subsystem_vendor;
