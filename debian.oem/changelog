@@ -1,3 +1,20 @@
+linux-oem-5.10 (5.10.0-1020.22) UNRELEASED; urgency=medium
+
+  * drm/i915: Add support for Intel's eDP backlight controls
+    - drm/i915: refactor panel backlight control functions. (v2)
+    - drm/i915/dp: Program source OUI on eDP panels
+    - drm/i915: Rename pwm_* backlight callbacks to ext_pwm_*
+    - drm/i915: Pass down brightness values to enable/disable backlight callbacks
+    - drm/i915/dp: Rename eDP VESA backlight interface functions
+    - drm/i915/dp: Add register definitions for Intel HDR backlight interface
+    - drm/i915: Pass port to intel_panel_bl_funcs.get()
+    - drm/i915: Keep track of pwm-related backlight hooks separately
+    - drm/i915/dp: Enable Intel's HDR backlight interface (only SDR for now)
+    - drm/i915/dp: Allow forcing specific interfaces through enable_dpcd_backlight
+    - Revert "drm/dp: Introduce EDID-based quirks"
+
+ -- Punit Agrawal <punitagrawal@gmail.com>  Sun, 24 Oct 2021 10:43:23 +0900
+
 linux-oem-5.10 (5.10.0-1020.21) focal; urgency=medium
 
   * focal/linux-oem-5.10: 5.10.0-1020 -proposed tracker (LP: #1921041)
